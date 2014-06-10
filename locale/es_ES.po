@@ -1,0 +1,198 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:stock.external.reception:"
+msgid "Missing product on Line \"%s\" of reception \"%s\"."
+msgstr "Falta el producto a la linea \"%s\" de la recepción \"%s\"."
+
+msgctxt "field:stock.external.reception,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:stock.external.reception,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.external.reception,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.external.reception,effective_date:"
+msgid "Effective Date"
+msgstr "Fecha efectiva"
+
+msgctxt "field:stock.external.reception,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:stock.external.reception,lines:"
+msgid "Lines"
+msgstr "Líneas"
+
+msgctxt "field:stock.external.reception,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:stock.external.reception,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.external.reception,reference:"
+msgid "Reference"
+msgstr "Referencia"
+
+msgctxt "field:stock.external.reception,shipments:"
+msgid "External Shipments"
+msgstr "Albaranes externos"
+
+msgctxt "field:stock.external.reception,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:stock.external.reception,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
+msgctxt "field:stock.external.reception,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:stock.external.reception,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:stock.external.reception.line,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:stock.external.reception.line,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:stock.external.reception.line,description:"
+msgid "Description"
+msgstr "Descripción"
+
+msgctxt "field:stock.external.reception.line,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:stock.external.reception.line,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:stock.external.reception.line,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Categoría UdM del producto"
+
+msgctxt "field:stock.external.reception.line,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:stock.external.reception.line,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:stock.external.reception.line,reception:"
+msgid "Reception"
+msgstr "Recepción"
+
+msgctxt "field:stock.external.reception.line,sequence:"
+msgid "Sequence"
+msgstr "Secuencia"
+
+msgctxt "field:stock.external.reception.line,unit:"
+msgid "Unit"
+msgstr "Unidad"
+
+msgctxt "field:stock.external.reception.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos unidad"
+
+msgctxt "field:stock.external.reception.line,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:stock.external.reception.line,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:stock.shipment.external,reception:"
+msgid "External Reception"
+msgstr "Recepción externa"
+
+msgctxt "model:ir.action,name:act_stock_external_reception"
+msgid "External Receptions"
+msgstr "Linea recepción externa"
+
+msgctxt "model:ir.action,name:act_stock_external_reception_line"
+msgid "External Reception Line"
+msgstr "Linea recepción externa"
+
+msgctxt "model:ir.action,name:act_stock_shipment_external"
+msgid "Shipments"
+msgstr "Albaranes"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_stock_external_reception_domain_all"
+msgid "All"
+msgstr "Todos"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_stock_external_reception_domain_draft"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_stock_external_reception_domain_received"
+msgid "Received"
+msgstr "Recibido"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_external_reception"
+msgid "External Receptions"
+msgstr "Linea recepción externa"
+
+msgctxt "model:res.group,name:group_stock_external_reception"
+msgid "Stock External Reception"
+msgstr "Recepciónes externas existencias"
+
+msgctxt "model:stock.external.reception,name:"
+msgid "External Reception"
+msgstr "Recepción externa"
+
+msgctxt "model:stock.external.reception.line,name:"
+msgid "External Reception Line"
+msgstr "Linea recepción externa"
+
+msgctxt "selection:stock.external.reception,state:"
+msgid "Done"
+msgstr "Realizado"
+
+msgctxt "selection:stock.external.reception,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:stock.external.reception,state:"
+msgid "Received"
+msgstr "Recibido"
+
+msgctxt "view:stock.external.reception.line:"
+msgid "External Reception Line"
+msgstr "Linea recepción externa"
+
+msgctxt "view:stock.external.reception:"
+msgid "Done"
+msgstr "Realizado"
+
+msgctxt "view:stock.external.reception:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:stock.external.reception:"
+msgid "External Reception"
+msgstr "Recepción externa"
+
+msgctxt "view:stock.external.reception:"
+msgid "Receive"
+msgstr "Recibir"
