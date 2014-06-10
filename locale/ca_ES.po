@@ -124,11 +124,11 @@ msgstr "Recepcció externa"
 
 msgctxt "model:ir.action,name:act_stock_external_reception"
 msgid "External Receptions"
-msgstr "Linia de recepció externa"
+msgstr "Recepcions de client"
 
 msgctxt "model:ir.action,name:act_stock_external_reception_line"
 msgid "External Reception Line"
-msgstr "Linia de recepció externa"
+msgstr "Línia de recepció de client"
 
 msgctxt "model:ir.action,name:act_stock_shipment_external"
 msgid "Shipments"
@@ -151,7 +151,7 @@ msgstr "Rebut"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_external_reception"
 msgid "External Receptions"
-msgstr "Linia de recepció externa"
+msgstr "Recepcions de client"
 
 msgctxt "model:res.group,name:group_stock_external_reception"
 msgid "Stock External Reception"
@@ -163,7 +163,7 @@ msgstr "Recepcció externa"
 
 msgctxt "model:stock.external.reception.line,name:"
 msgid "External Reception Line"
-msgstr "Linia de recepció externa"
+msgstr "Línia de recepció de client"
 
 msgctxt "selection:stock.external.reception,state:"
 msgid "Done"
@@ -179,7 +179,7 @@ msgstr "Rebut"
 
 msgctxt "view:stock.external.reception.line:"
 msgid "External Reception Line"
-msgstr "Linia de recepció externa"
+msgstr "Línia de recepció de client"
 
 msgctxt "view:stock.external.reception:"
 msgid "Done"
