@@ -6,6 +6,7 @@ from .shipment import *
 
 def register():
     Pool.register(
+        Configuration,
         ExternalReception,
         ExternalReceptionLine,
         ShipmentExternal,

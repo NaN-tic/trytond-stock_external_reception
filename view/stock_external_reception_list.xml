@@ -2,6 +2,7 @@
 <!-- The COPYRIGHT file at the top level of this repository contains the full
      copyright notices and license terms. -->
 <tree string="External Reception">
+    <field name="code"/>
     <field name="reference"/>
     <field name="warehouse"/>
     <field name="party"/>

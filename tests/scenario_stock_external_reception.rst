@@ -135,7 +135,7 @@ Create external shipment from received products::
     >>> reception.click('done')
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', (u'Missing product on Line "Test product" of reception "1234".', ''))
+    UserError: ('UserError', (u'Missing product on Line "Test product" of reception "1".', ''))
     >>> line, = reception.lines
     >>> line.product = product
     >>> reception.click('done')

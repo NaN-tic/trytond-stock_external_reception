@@ -2,12 +2,14 @@
 <!-- The COPYRIGHT file at the top level of this repository contains the full
      copyright notices and license terms. -->
 <form string="External Reception">
-    <label name="company"/>
-    <field name="company"/>
+    <label name="code"/>
+    <field name="code"/>
     <label name="reference"/>
     <field name="reference"/>
     <label name="party"/>
     <field name="party"/>
+    <label name="company"/>
+    <field name="company"/>
     <label name="warehouse"/>
     <field name="warehouse"/>
     <label name="effective_date"/>
