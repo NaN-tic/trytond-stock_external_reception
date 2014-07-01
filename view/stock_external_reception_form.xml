@@ -14,8 +14,15 @@
     <field name="warehouse"/>
     <label name="effective_date"/>
     <field name="effective_date"/>
-    <field name="lines" colspan="4"
-        view_ids="stock_external_reception.stock_external_reception_line_view_list_sequence,stock_external_reception.stock_external_reception_line_view_form"/>
+    <notebook>
+        <page name="lines">
+            <field name="lines" colspan="4"
+                view_ids="stock_external_reception.stock_external_reception_line_view_list_sequence,stock_external_reception.stock_external_reception_line_view_form"/>
+        </page>
+        <page name="notes">
+            <field name="notes" colspan="4"/>
+        </page>
+    </notebook>
     <group colspan="4" id="states">
         <label name="state"/>
         <field name="state"/>

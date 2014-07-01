@@ -18,7 +18,7 @@ _DEPENDS = ['state']
 class Configuration:
     __name__ = 'stock.configuration'
     external_reception_sequence = fields.Property(fields.Many2One(
-            'ir.sequence', 'External reception Sequence', domain=[
+            'ir.sequence', 'External Reception Sequence', domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.external.reception'),
@@ -50,6 +50,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['draft', 'received']),
             },
         depends=_DEPENDS)
+    notes = fields.Text('Notes')
     shipments = fields.One2Many('stock.shipment.external', 'reception',
         'External Shipments', readonly=True)
     state = fields.Selection([
@@ -186,7 +187,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
     reception = fields.Many2One('stock.external.reception', 'Reception',
         ondelete='CASCADE', select=True)
     sequence = fields.Integer('Sequence')
-    description = fields.Text('Description', size=None, required=True)
+    description = fields.Text('Description', required=True)
     product = fields.Many2One('product.product', 'Product')
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
@@ -195,14 +196,32 @@ class ExternalReceptionLine(ModelSQL, ModelView):
         digits=(16, Eval('unit_digits', 2)),
         depends=['unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit',
+        states={
+            'required': Bool(Eval('product', 0)),
+            },
         domain=[
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
             ],
-        depends=['product_uom_category'])
+        depends=['product_uom_category', 'product'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
+    notes = fields.Text('Notes')
+
+    @fields.depends('product', 'unit')
+    def on_change_product(self):
+        res = {}
+        if not self.product:
+            return res
+
+        category = self.product.default_uom.category
+        if not self.unit or self.unit not in category.uoms:
+            res['unit'] = self.product.default_uom.id
+            self.unit = self.product.default_uom
+            res['unit.rec_name'] = self.product.default_uom.rec_name
+            res['unit_digits'] = self.product.default_uom.digits
+        return res
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):

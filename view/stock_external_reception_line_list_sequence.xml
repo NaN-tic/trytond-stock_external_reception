@@ -4,7 +4,8 @@
 <tree string="External Reception Line" sequence="sequence" editable="bottom">
     <field name="reception"/>
     <field name="description"/>
-    <field name="product"/>
     <field name="quantity"/>
+    <field name="notes"/>
+    <field name="product"/>
     <field name="unit"/>
 </tree>

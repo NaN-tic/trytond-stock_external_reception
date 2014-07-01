@@ -6,6 +6,14 @@ msgctxt "error:stock.external.reception:"
 msgid "Missing product on Line \"%s\" of reception \"%s\"."
 msgstr "Falta el producto a la linea \"%s\" de la recepción \"%s\"."
 
+msgctxt "field:stock.configuration,external_reception_sequence:"
+msgid "External Reception Sequence"
+msgstr "Secuencia de recepciones de cliente"
+
+msgctxt "field:stock.external.reception,code:"
+msgid "Code"
+msgstr "Código"
+
 msgctxt "field:stock.external.reception,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -29,6 +37,10 @@ msgstr "Identificador"
 msgctxt "field:stock.external.reception,lines:"
 msgid "Lines"
 msgstr "Líneas"
+
+msgctxt "field:stock.external.reception,notes:"
+msgid "Notes"
+msgstr "Notas"
 
 msgctxt "field:stock.external.reception,party:"
 msgid "Party"
@@ -78,6 +90,10 @@ msgctxt "field:stock.external.reception.line,id:"
 msgid "ID"
 msgstr "Identificador"
 
+msgctxt "field:stock.external.reception.line,notes:"
+msgid "Notes"
+msgstr "Notas"
+
 msgctxt "field:stock.external.reception.line,product:"
 msgid "Product"
 msgstr "Producto"
@@ -120,15 +136,15 @@ msgstr "Usuario modificación"
 
 msgctxt "field:stock.shipment.external,reception:"
 msgid "External Reception"
-msgstr "Recepción externa"
+msgstr "Recepción de cliente"
 
 msgctxt "model:ir.action,name:act_stock_external_reception"
 msgid "External Receptions"
-msgstr "Linea recepción externa"
+msgstr "Linea recepción de cliente"
 
 msgctxt "model:ir.action,name:act_stock_external_reception_line"
 msgid "External Reception Line"
-msgstr "Linea recepción externa"
+msgstr "Linea recepción de cliente"
 
 msgctxt "model:ir.action,name:act_stock_shipment_external"
 msgid "Shipments"
@@ -149,21 +165,29 @@ msgctxt ""
 msgid "Received"
 msgstr "Recibido"
 
+msgctxt "model:ir.sequence,name:sequence_external_reception"
+msgid "Shipment Reception"
+msgstr "Secuencia recepción de cliente"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_external_reception"
+msgid "External Reception"
+msgstr "Recepción de cliente"
+
 msgctxt "model:ir.ui.menu,name:menu_stock_external_reception"
 msgid "External Receptions"
-msgstr "Linea recepción externa"
+msgstr "Linea recepción de cliente"
 
 msgctxt "model:res.group,name:group_stock_external_reception"
 msgid "Stock External Reception"
-msgstr "Recepciónes externas existencias"
+msgstr "Recepciones de cliente"
 
 msgctxt "model:stock.external.reception,name:"
 msgid "External Reception"
-msgstr "Recepción externa"
+msgstr "Recepción de cliente"
 
 msgctxt "model:stock.external.reception.line,name:"
 msgid "External Reception Line"
-msgstr "Linea recepción externa"
+msgstr "Linea recepción de cliente"
 
 msgctxt "selection:stock.external.reception,state:"
 msgid "Done"
@@ -179,7 +203,7 @@ msgstr "Recibido"
 
 msgctxt "view:stock.external.reception.line:"
 msgid "External Reception Line"
-msgstr "Linea recepción externa"
+msgstr "Linea recepción de cliente"
 
 msgctxt "view:stock.external.reception:"
 msgid "Done"
@@ -191,7 +215,7 @@ msgstr "Borrador"
 
 msgctxt "view:stock.external.reception:"
 msgid "External Reception"
-msgstr "Recepción externa"
+msgstr "Recepción de cliente"
 
 msgctxt "view:stock.external.reception:"
 msgid "Receive"

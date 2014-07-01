@@ -119,7 +119,6 @@ Recieve products from customer::
     >>> reception.party = customer
     >>> line = reception.lines.new()
     >>> line.description = 'Test product'
-    >>> line.unit = unit
     >>> line.quantity = 1
     >>> reception.click('receive')
     >>> reception.click('done')
