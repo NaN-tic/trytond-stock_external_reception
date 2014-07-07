@@ -69,14 +69,14 @@
                 id="act_shipment_external_form_view1">
             <field name="sequence" eval="1"/>
             <field name="view"
-                ref="stock_external_shipment.shipment_external_view_tree"/>
+                ref="stock_external.shipment_external_view_tree"/>
             <field name="act_window" ref="act_stock_shipment_external"/>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_external_form_view2">
             <field name="sequence" eval="2"/>
             <field name="view"
-                ref="stock_external_shipment.shipment_external_view_form"/>
+                ref="stock_external.shipment_external_view_form"/>
             <field name="act_window" ref="act_stock_shipment_external"/>
         </record>
         <record model="ir.action.keyword"
