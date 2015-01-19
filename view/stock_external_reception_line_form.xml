@@ -8,10 +8,10 @@
     <field name="description" colspan="4"/>
     <label name="quantity"/>
     <field name="quantity"/>
+    <label name="unit"/>
+    <field name="unit"/>
     <separator name="notes" colspan="4"/>
     <field name="notes" colspan="4"/>
     <label name="product"/>
     <field name="product"/>
-    <label name="unit"/>
-    <field name="unit"/>
 </form>
