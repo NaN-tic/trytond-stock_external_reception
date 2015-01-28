@@ -219,7 +219,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
         'on_change_with_unit_digits')
     notes = fields.Text('Notes')
 
-    @fields.depends('product', 'unit')
+    @fields.depends('product', 'unit', 'description')
     def on_change_product(self):
         res = {}
         if not self.product:
@@ -231,6 +231,8 @@ class ExternalReceptionLine(ModelSQL, ModelView):
             self.unit = self.product.default_uom
             res['unit.rec_name'] = self.product.default_uom.rec_name
             res['unit_digits'] = self.product.default_uom.digits
+        if not self.description:
+            res['description'] = self.product.rec_name
         return res
 
     @fields.depends('unit')
