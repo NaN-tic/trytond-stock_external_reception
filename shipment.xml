@@ -43,14 +43,18 @@
                 id="act_stock_external_reception_domain_draft">
             <field name="name">Draft</field>
             <field name="sequence" eval="10"/>
-            <field name="domain">[('state', '=', 'draft')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'draft')]"
+                pyson="1"/>
             <field name="act_window" ref="act_stock_external_reception"/>
         </record>
         <record model="ir.action.act_window.domain"
                 id="act_stock_external_reception_domain_received">
             <field name="name">Received</field>
             <field name="sequence" eval="20"/>
-            <field name="domain">[('state', '=', 'received')]</field>
+            <field name="domain"
+                eval="[('state', '=', 'received')]"
+                pyson="1"/>
             <field name="act_window" ref="act_stock_external_reception"/>
         </record>
         <record model="ir.action.act_window.domain"
@@ -63,7 +67,9 @@
         <record model="ir.action.act_window" id="act_stock_shipment_external">
             <field name="name">Shipments</field>
             <field name="res_model">stock.shipment.external</field>
-            <field name="domain">[('reception', 'in', Eval('active_ids'))]</field>
+            <field name="domain"
+                eval="[('reception', 'in', Eval('active_ids'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view"
                 id="act_shipment_external_form_view1">
@@ -195,7 +201,9 @@
           </record>
 
           <record model="ir.rule" id="rule_stock_external_reception1">
-              <field name="domain">[('company', '=', user.company.id if user.company else None)]</field>
+              <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
             <field name="rule_group" ref="rule_group_stock_external_reception"/>
           </record>
 
