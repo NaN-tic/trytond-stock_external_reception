@@ -221,19 +221,13 @@ class ExternalReceptionLine(ModelSQL, ModelView):
 
     @fields.depends('product', 'unit', 'description')
     def on_change_product(self):
-        res = {}
-        if not self.product:
-            return res
-
-        category = self.product.default_uom.category
-        if not self.unit or self.unit not in category.uoms:
-            res['unit'] = self.product.default_uom.id
-            self.unit = self.product.default_uom
-            res['unit.rec_name'] = self.product.default_uom.rec_name
-            res['unit_digits'] = self.product.default_uom.digits
-        if not self.description:
-            res['description'] = self.product.rec_name
-        return res
+        if self.product:
+            category = self.product.default_uom.category
+            if not self.unit or self.unit not in category.uoms:
+                self.unit = self.product.default_uom
+                self.unit_digits = self.product.default_uom.digits
+            if not self.description:
+                self.description = self.product.rec_name
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
