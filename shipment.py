@@ -14,9 +14,8 @@ _STATES = {
 _DEPENDS = ['state']
 
 
-class Configuration:
+class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
-    __metaclass__ = PoolMeta
     external_reception_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "External Reception Sequence", required=True,
             domain=[
@@ -40,9 +39,8 @@ class Configuration:
             'sequence_external_reception')
 
 
-class ConfigurationSequence:
+class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'stock.configuration.sequence'
-    __metaclass__ = PoolMeta
     external_reception_sequence = fields.Many2One(
         'ir.sequence', "External Reception Sequence", required=True,
         domain=[
@@ -281,9 +279,8 @@ class ExternalReceptionLine(ModelSQL, ModelView):
         return move
 
 
-class ShipmentExternal:
+class ShipmentExternal(metaclass=PoolMeta):
     __name__ = 'stock.shipment.external'
-    __metaclass__ = PoolMeta
 
     reception = fields.Many2One('stock.external.reception',
         'External Reception', readonly=True)

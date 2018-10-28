@@ -57,15 +57,13 @@ Create product::
     >>> ProductTemplate = Model.get('product.template')
     >>> Product = Model.get('product.product')
     >>> unit, = ProductUom.find([('name', '=', 'Unit')])
-    >>> product = Product()
     >>> template = ProductTemplate()
     >>> template.name = 'Product'
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
-    >>> template.cost_price = Decimal('8')
     >>> template.save()
-    >>> product.template = template
+    >>> product, = template.products
     >>> product.save()
 
 Get stock locations::
@@ -100,7 +98,7 @@ Create external shipment from received products::
     >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', (u'Missing product on Line "Test product" of reception "1".', ''))
+    UserError: ('UserError', ('Missing product on Line "Test product" of reception "1".', ''))
     >>> line, = reception.lines
     >>> line.product = product
     >>> reception.click('done')
@@ -108,12 +106,12 @@ Create external shipment from received products::
     >>> shipment.party == reception.party
     True
     >>> shipment.state
-    u'done'
+    'done'
     >>> shipment.effective_date == reception.effective_date
     True
     >>> move, = shipment.moves
     >>> move.state
-    u'done'
+    'done'
     >>> move.product == product
     True
     >>> move.quantity == 1.0
