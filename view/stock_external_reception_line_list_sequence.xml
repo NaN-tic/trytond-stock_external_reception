@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- The COPYRIGHT file at the top level of this repository contains the full
      copyright notices and license terms. -->
-<tree string="External Reception Line" sequence="sequence" editable="bottom">
+<tree sequence="sequence" editable="bottom">
     <field name="reception"/>
     <field name="description"/>
     <field name="quantity"/>

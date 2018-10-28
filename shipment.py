@@ -5,9 +5,8 @@ from trytond.pyson import Eval, If, In, Bool, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Configuration', 'ExternalReception', 'ExternalReceptionLine',
-    'ShipmentExternal']
-__metaclass__ = PoolMeta
+__all__ = ['Configuration', 'ConfigurationSequence', 'ExternalReception',
+    'ExternalReceptionLine', 'ShipmentExternal']
 
 _STATES = {
     'readonly': Eval('state') != 'draft',
@@ -17,12 +16,40 @@ _DEPENDS = ['state']
 
 class Configuration:
     __name__ = 'stock.configuration'
-    external_reception_sequence = fields.Property(fields.Many2One(
-            'ir.sequence', 'External Reception Sequence', domain=[
+    __metaclass__ = PoolMeta
+    external_reception_sequence = fields.MultiValue(fields.Many2One(
+            'ir.sequence', "External Reception Sequence", required=True,
+            domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'stock.external.reception'),
-                ], required=True))
+                ]))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field == 'external_reception_sequence':
+            return pool.get('stock.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
+
+    @staticmethod
+    def default_external_reception_sequence(**pattern):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        return ModelData.get_id('stock_external_reception',
+            'sequence_external_reception')
+
+
+class ConfigurationSequence:
+    __name__ = 'stock.configuration.sequence'
+    __metaclass__ = PoolMeta
+    external_reception_sequence = fields.Many2One(
+        'ir.sequence', "External Reception Sequence", required=True,
+        domain=[
+            ('company', 'in', [Eval('company', -1), None]),
+            ('code', '=', 'stock.external.reception'),
+            ],
+        depends=['company'])
 
 
 class ExternalReception(Workflow, ModelSQL, ModelView):
@@ -256,6 +283,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
 
 class ShipmentExternal:
     __name__ = 'stock.shipment.external'
+    __metaclass__ = PoolMeta
 
     reception = fields.Many2One('stock.external.reception',
         'External Reception', readonly=True)

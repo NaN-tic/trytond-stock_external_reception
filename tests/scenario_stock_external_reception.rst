@@ -2,32 +2,21 @@
 Stock Shipment External Reception Scenario
 ==========================================
 
-=============
-General Setup
-=============
-
 Imports::
 
     >>> import datetime
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import config, Model, Wizard
+    >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
-Create database::
+Activate stock_external_reception::
 
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
-Install stock_external_reception Module::
-
-    >>> Module = Model.get('ir.module')
-    >>> modules = Module.find([('name', '=', 'stock_external_reception')])
-    >>> Module.install([x.id for x in modules], config.context)
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = activate_modules('stock_external_reception')
 
 Create company::
 
@@ -98,7 +87,7 @@ Recieve products from customer::
     >>> line.description = 'Test product'
     >>> line.quantity = 1
     >>> reception.click('receive')
-    >>> reception.click('done')
+    >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     UserError: ('UserError', ('Calling button done on stock.external.reception is not allowed!', ''))
@@ -108,7 +97,7 @@ Create external shipment from received products::
     >>> config.user = stock_user.id
     >>> Reception = Model.get('stock.external.reception')
     >>> reception = Reception(reception.id)
-    >>> reception.click('done')
+    >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     UserError: ('UserError', (u'Missing product on Line "Test product" of reception "1".', ''))

@@ -23,6 +23,7 @@
             <field name="type">tree</field>
             <field name="name">stock_external_reception_list</field>
         </record>
+
         <record model="ir.action.act_window" id="act_stock_external_reception">
             <field name="name">External Receptions</field>
             <field name="res_model">stock.external.reception</field>
@@ -122,16 +123,36 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
         </record>
+
+        <record model="ir.model.button" id="stock_external_reception_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Receive</field>
+            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="stock_external_reception_draft_button_group_stock">
+            <field name="button" ref="stock_external_reception_draft_button"/>
+            <field name="group" ref="group_stock_external_reception"/>
+        </record>
+
+        <record model="ir.model.button" id="stock_external_reception_receive_button">
+            <field name="name">receive</field>
+            <field name="string">Receive</field>
+            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="stock_external_reception_receive_button_group_stock">
+            <field name="button" ref="stock_external_reception_receive_button"/>
+            <field name="group" ref="group_stock_external_reception"/>
+        </record>
+
         <record model="ir.model.button" id="external_reception_done_button">
             <field name="name">done</field>
-            <field name="model"
-                search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
         </record>
-        <record model="ir.model.button-res.group"
-            id="external_reception_done_button_group_stock">
+        <record model="ir.model.button-res.group" id="external_reception_done_button_group_stock">
             <field name="button" ref="external_reception_done_button"/>
             <field name="group" ref="stock.group_stock"/>
         </record>
+
         <record model="ir.ui.view" id="stock_external_reception_line_view_form">
             <field name="model">stock.external.reception.line</field>
             <field name="type">form</field>
@@ -228,25 +249,18 @@
                 <field name="code">stock.external.reception</field>
         </record>
 
-        <record model="ir.property" id="property_shipment_external_sequence">
-            <field name="field"
-                search="[('model.model', '=', 'stock.configuration'), ('name', '=', 'external_reception_sequence')]"/>
-            <field name="value" eval="'ir.sequence,' + str(ref('sequence_external_reception'))"/>
-        </record>
-
         <!-- Menus -->
-
-          <menuitem action="act_stock_external_reception"
+        <menuitem action="act_stock_external_reception"
               id="menu_stock_external_reception"
               parent="stock.menu_stock"
               sequence="39" />
-          <record model="ir.ui.menu-res.group" id="menu_stock_external_reception_group_stock_external_reception_admin">
+        <record model="ir.ui.menu-res.group" id="menu_stock_external_reception_group_stock_external_reception_admin">
             <field name="menu" ref="menu_stock_external_reception"/>
             <field name="group" ref="group_stock_external_reception"/>
-          </record>
-          <record model="ir.ui.menu-res.group" id="menu_stock_external_reception_group_stock_external_reception_stock">
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_stock_external_reception_group_stock_external_reception_stock">
             <field name="menu" ref="menu_stock_external_reception"/>
             <field name="group" ref="stock.group_stock"/>
-          </record>
+        </record>
     </data>
 </tryton>
