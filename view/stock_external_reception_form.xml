@@ -27,9 +27,9 @@
         <label name="state"/>
         <field name="state"/>
         <group colspan="2" id="buttons">
-            <button name="draft" string="Draft"/>
-            <button name="receive" string="Receive"/>
-            <button name="done" string="Done"/>
+            <button name="draft"/>
+            <button name="receive"/>
+            <button name="done"/>
         </group>
     </group>
 </form>
