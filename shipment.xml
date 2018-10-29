@@ -126,12 +126,16 @@
 
         <record model="ir.model.button" id="stock_external_reception_draft_button">
             <field name="name">draft</field>
-            <field name="string">Receive</field>
+            <field name="string">Draft</field>
             <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="stock_external_reception_draft_button_group_external_reception">
+            <field name="button" ref="stock_external_reception_draft_button"/>
+            <field name="group" ref="group_stock_external_reception"/>
         </record>
         <record model="ir.model.button-res.group" id="stock_external_reception_draft_button_group_stock">
             <field name="button" ref="stock_external_reception_draft_button"/>
-            <field name="group" ref="group_stock_external_reception"/>
+            <field name="group" ref="stock.group_stock"/>
         </record>
 
         <record model="ir.model.button" id="stock_external_reception_receive_button">
@@ -139,9 +143,13 @@
             <field name="string">Receive</field>
             <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="stock_external_reception_receive_button_group_stock">
+        <record model="ir.model.button-res.group" id="stock_external_reception_receive_button_group_external_reception">
             <field name="button" ref="stock_external_reception_receive_button"/>
             <field name="group" ref="group_stock_external_reception"/>
+        </record>
+        <record model="ir.model.button-res.group" id="stock_external_reception_receive_button_group_stock">
+            <field name="button" ref="stock_external_reception_receive_button"/>
+            <field name="group" ref="stock.group_stock"/>
         </record>
 
         <record model="ir.model.button" id="external_reception_done_button">
