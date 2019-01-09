@@ -88,7 +88,7 @@ Recieve products from customer::
     >>> reception.click('done')    # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
-    UserError: ('UserError', ('Calling button done on stock.external.reception is not allowed!', ''))
+    trytond.model.modelview.AccessButtonError: ('UserError', ('Calling button "done on "stock.external.reception" is not allowed.', ''))
 
 Create external shipment from received products::
 

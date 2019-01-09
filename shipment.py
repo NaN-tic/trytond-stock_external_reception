@@ -4,6 +4,9 @@ from trytond.model import Workflow, ModelSQL, ModelView, fields
 from trytond.pyson import Eval, If, In, Bool, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
+
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'ExternalReception',
     'ExternalReceptionLine', 'ShipmentExternal']
@@ -93,10 +96,6 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
                 ('received', 'draft'),
                 ('received', 'done'),
                 ))
-        cls._error_messages.update({
-                'missing_product': ('Missing product on Line "%s" of reception'
-                    ' "%s".'),
-                })
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') != 'received',
@@ -160,8 +159,10 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
             moves = []
             for line in reception.lines:
                 if not line.product:
-                    cls.raise_user_error('missing_product', (line.rec_name,
-                            reception.rec_name))
+                    raise UserError(
+                        gettext('stock_external_reception.missing_product',
+                            line=line.rec_name,
+                            shipment=reception.rec_name))
                 move = line._get_move()
                 move.to_location = shipment.to_location
                 move.from_location = shipment.from_location
