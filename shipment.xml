@@ -225,6 +225,7 @@
         </record>
 
           <record model="ir.rule.group" id="rule_group_stock_external_reception">
+            <field name="name">Stok External Reception, User Company</field>
             <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
             <field name="global_p" eval="True"/>
           </record>
