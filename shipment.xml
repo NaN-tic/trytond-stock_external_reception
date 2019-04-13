@@ -9,10 +9,6 @@
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_stock_external_reception"/>
         </record>
-        <record model="res.user-res.group" id="user_trigger_group_stock_external_reception">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_stock_external_reception"/>
-        </record>
         <record model="ir.ui.view" id="stock_external_reception_view_form">
             <field name="model">stock.external.reception</field>
             <field name="type">form</field>
