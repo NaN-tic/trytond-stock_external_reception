@@ -1,7 +1,7 @@
 #The COPYRIGHT file at the top level of this repository contains the full
 #copyright notices and license terms.
 from trytond.model import Workflow, ModelSQL, ModelView, fields
-from trytond.pyson import Eval, If, In, Bool, Id
+from trytond.pyson import Eval, If, In, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.i18n import gettext
@@ -108,8 +108,6 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
                 'done': {
                     'invisible': Eval('state') != 'received',
                     'icon': 'tryton-ok',
-                    'readonly': ~Eval('groups', []).contains(
-                        Id('stock', 'group_stock')),
                     },
                 })
 
