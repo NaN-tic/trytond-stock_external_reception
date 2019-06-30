@@ -1,14 +1,14 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
-
-msgctxt "error:stock.external.reception:"
-msgid "Missing product on Line \"%s\" of reception \"%s\"."
-msgstr "Falta el producte a la línia \"%s\" de la recepció \"%s\"."
 
 msgctxt "field:stock.configuration,external_reception_sequence:"
 msgid "External Reception Sequence"
 msgstr "Seqüència de recepcions de client"
+
+msgctxt "field:stock.configuration.sequence,external_reception_sequence:"
+msgid "External Reception Sequence"
+msgstr "Seqüència de recepcions externes"
 
 msgctxt "field:stock.external.reception,code:"
 msgid "Code"
@@ -47,7 +47,7 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:stock.external.reception,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:stock.external.reception,reference:"
@@ -107,7 +107,7 @@ msgid "Quantity"
 msgstr "Quantitat"
 
 msgctxt "field:stock.external.reception.line,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:stock.external.reception.line,reception:"
@@ -164,6 +164,22 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_stock_external_reception_domain_received"
 msgid "Received"
 msgstr "Rebut"
+
+msgctxt "model:ir.message,text:missing_product"
+msgid "Missing product on Line \"%(line)s\" of reception \"%(shipment)s\"."
+msgstr "Falta producte a la línia \"%(line)s\" de la recepció \"%(shipment)s\"."
+
+msgctxt "model:ir.model.button,string:stock_external_reception_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:stock_external_reception_receive_button"
+msgid "Receive"
+msgstr "Rebre"
+
+msgctxt "model:ir.rule.group,name:rule_group_stock_external_reception"
+msgid "Stock External Reception, User Company"
+msgstr "Recepció d'estoc extern, Companyia d'usuari"
 
 msgctxt "model:ir.sequence,name:sequence_external_reception"
 msgid "Shipment Reception"
