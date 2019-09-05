@@ -99,11 +99,11 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
         cls._buttons.update({
                 'draft': {
                     'invisible': Eval('state') != 'received',
-                    'icon': 'tryton-go-previous',
+                    'icon': 'tryton-back',
                     },
                 'receive': {
                     'invisible': Eval('state') != 'draft',
-                    'icon': 'tryton-go-next',
+                    'icon': 'tryton-forward',
                     },
                 'done': {
                     'invisible': Eval('state') != 'received',
