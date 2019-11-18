@@ -1,6 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
 <tryton>
     <data>
+        <!-- stock.configuration -->
+        <record id="view_stock_configuration_view_form" model="ir.ui.view">
+            <field name="model">stock.configuration</field>
+            <field name="inherit" ref="stock.stock_configuration_view_form"/>
+            <field name="name">configuration_form</field>
+        </record>
 
         <record model="res.group" id="group_stock_external_reception">
             <field name="name">Stock External Reception</field>
