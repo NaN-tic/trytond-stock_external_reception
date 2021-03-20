@@ -242,7 +242,6 @@
         <!-- Sequence -->
         <record model="ir.sequence.type" id="sequence_type_external_reception">
             <field name="name">External Reception</field>
-            <field name="code">stock.external.reception</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_external_reception_group_admin">
@@ -256,8 +255,8 @@
         </record>
 
         <record model="ir.sequence" id="sequence_external_reception">
-                <field name="name">Shipment Reception</field>
-                <field name="code">stock.external.reception</field>
+            <field name="name">Shipment Reception</field>
+            <field name="sequence_type" ref="sequence_type_external_reception"/>
         </record>
 
         <!-- Menus -->

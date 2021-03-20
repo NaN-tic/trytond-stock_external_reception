@@ -1,7 +1,7 @@
 #The COPYRIGHT file at the top level of this repository contains the full
 #copyright notices and license terms.
 from trytond.model import Workflow, ModelSQL, ModelView, fields
-from trytond.pyson import Eval, If, In, Bool
+from trytond.pyson import Eval, If, In, Bool, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.i18n import gettext
@@ -24,7 +24,8 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.external.reception'),
+                ('sequence_type', '=', Id('stock_external_reception',
+                        'sequence_type_external_reception')),
                 ]))
 
     @classmethod
@@ -198,8 +199,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(
-                config.external_reception_sequence.id)
+            values['code'] = config.external_reception_sequence.get()
         shipments = super(ExternalReception, cls).create(vlist)
         return shipments
 
