@@ -7,10 +7,6 @@ from trytond.transaction import Transaction
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
 
-
-__all__ = ['Configuration', 'ConfigurationSequence', 'ExternalReception',
-    'ExternalReceptionLine', 'ShipmentExternal']
-
 _STATES = {
     'readonly': Eval('state') != 'draft',
     }
@@ -193,7 +189,6 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
