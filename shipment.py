@@ -161,6 +161,9 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
                 move = line._get_move()
                 move.to_location = shipment.to_location
                 move.from_location = shipment.from_location
+                if move.on_change_with_unit_price_required():
+                    move.unit_price = line.product.cost_price
+                    move.currency = line.reception.company.currency
                 moves.append(move._save_values)
             shipment.moves = moves
             vals = shipment._save_values
@@ -206,7 +209,6 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
             default = default.copy()
         default['shipments'] = None
         return super(ExternalReception, cls).copy(receptions, default=default)
-
 
 
 class ExternalReceptionLine(ModelSQL, ModelView):
