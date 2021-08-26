@@ -223,9 +223,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    quantity = fields.Float('Quantity',
-        digits=(16, Eval('unit_digits', 2)),
-        depends=['unit_digits'])
+    quantity = fields.Float('Quantity', digits='unit')
     unit = fields.Many2One('product.uom', 'Unit',
         states={
             'required': Bool(Eval('product', 0)),
@@ -236,8 +234,6 @@ class ExternalReceptionLine(ModelSQL, ModelView):
                 ('category', '!=', -1)),
             ],
         depends=['product_uom_category', 'product'])
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     notes = fields.Text('Notes')
 
     @fields.depends('product', 'unit', 'description')
@@ -246,15 +242,8 @@ class ExternalReceptionLine(ModelSQL, ModelView):
             category = self.product.default_uom.category
             if not self.unit or self.unit not in category.uoms:
                 self.unit = self.product.default_uom
-                self.unit_digits = self.product.default_uom.digits
             if not self.description:
                 self.description = self.product.rec_name
-
-    @fields.depends('unit')
-    def on_change_with_unit_digits(self, name=None):
-        if self.unit:
-            return self.unit.digits
-        return 2
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
