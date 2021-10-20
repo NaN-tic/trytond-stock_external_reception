@@ -45,7 +45,8 @@ class ConfigurationSequence(metaclass=PoolMeta):
         'ir.sequence', "External Reception Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.external.reception'),
+            ('sequence_type', '=', Id('stock_external_reception',
+                    'sequence_type_external_reception')),
             ],
         depends=['company'])
 
