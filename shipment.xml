@@ -128,6 +128,18 @@
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_stock_external_reception">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_stock_external_reception1">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_stock_external_reception"/>
+        </record>
+
         <record model="ir.model.button" id="stock_external_reception_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
@@ -226,17 +238,6 @@
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
-        </record>
-
-          <record model="ir.rule.group" id="rule_group_stock_external_reception">
-            <field name="name">Stock External Reception, User Company</field>
-            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-
-        <record model="ir.rule" id="rule_stock_external_reception1">
-            <field name="domain" eval="[('company', '=', Eval('user', {}).get('company', None))]" pyson="1"/>
-            <field name="rule_group" ref="rule_group_stock_external_reception"/>
         </record>
 
         <!-- Sequence -->
