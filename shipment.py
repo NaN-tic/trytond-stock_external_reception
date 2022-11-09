@@ -55,7 +55,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
     "External Reception"
     __name__ = 'stock.external.reception'
     _rec_name = 'code'
-    code = fields.Char("Code", size=None, select=True, readonly=True)
+    code = fields.Char("Code", size=None, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
         states=_STATES, depends=_DEPENDS,
         domain=[
@@ -67,7 +67,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
             'company': Eval('company'),
             },
         states=_STATES, depends=_DEPENDS + ['company'])
-    reference = fields.Char("Reference", size=None, select=True,
+    reference = fields.Char("Reference", size=None,
         states=_STATES, depends=_DEPENDS)
     warehouse = fields.Many2One('stock.location', "Warehouse",
         required=True, domain=[('type', '=', 'warehouse')],
@@ -220,7 +220,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
     __name__ = 'stock.external.reception.line'
     _rec_name = 'description'
     reception = fields.Many2One('stock.external.reception', 'Reception',
-        ondelete='CASCADE', select=True)
+        ondelete='CASCADE')
     sequence = fields.Integer('Sequence')
     description = fields.Text('Description', required=True)
     product = fields.Many2One('product.product', 'Product')
