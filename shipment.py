@@ -261,7 +261,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
         move = Move()
         move.product = self.product
         move.quantity = self.quantity
-        move.uom = self.unit
+        move.unit = self.unit
         move.company = self.reception.company
         move.effective_date = self.reception.effective_date
         move.state = 'draft'
