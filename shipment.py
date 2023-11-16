@@ -64,7 +64,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
             ])
     party = fields.Many2One('party.party', 'Party', required=True,
         context={
-            'company': Eval('company'),
+            'company': Eval('company', -1),
             },
         states=_STATES, depends=_DEPENDS + ['company'])
     reference = fields.Char("Reference", size=None,
