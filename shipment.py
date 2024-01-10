@@ -10,7 +10,6 @@ from trytond.exceptions import UserError
 _STATES = {
     'readonly': Eval('state') != 'draft',
     }
-_DEPENDS = ['state']
 
 
 class Configuration(metaclass=PoolMeta):
@@ -47,8 +46,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
             ('company', 'in', [Eval('company', -1), None]),
             ('sequence_type', '=', Id('stock_external_reception',
                     'sequence_type_external_reception')),
-            ],
-        depends=['company'])
+            ])
 
 
 class ExternalReception(Workflow, ModelSQL, ModelView):
@@ -57,7 +55,7 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
     _rec_name = 'code'
     code = fields.Char("Code", size=None, readonly=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-        states=_STATES, depends=_DEPENDS,
+        states=_STATES,
         domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Eval('context', {}).get('company', -1)),
@@ -66,19 +64,16 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
         context={
             'company': Eval('company', -1),
             },
-        states=_STATES, depends=_DEPENDS + ['company'])
-    reference = fields.Char("Reference", size=None,
-        states=_STATES, depends=_DEPENDS)
+        states=_STATES, depends=['company'])
+    reference = fields.Char("Reference", size=None, states=_STATES)
     warehouse = fields.Many2One('stock.location', "Warehouse",
-        required=True, domain=[('type', '=', 'warehouse')],
-        states=_STATES, depends=_DEPENDS)
+        required=True, domain=[('type', '=', 'warehouse')], states=_STATES)
     effective_date = fields.Date('Effective Date', required=True,
-        states=_STATES, depends=_DEPENDS)
+        states=_STATES)
     lines = fields.One2Many('stock.external.reception.line', 'reception',
         'Lines', states={
             'readonly': ~Eval('state').in_(['draft', 'received']),
-            },
-        depends=_DEPENDS)
+            })
     notes = fields.Text('Notes')
     shipments = fields.One2Many('stock.shipment.external', 'reception',
         'External Shipments', readonly=True)
@@ -236,8 +231,7 @@ class ExternalReceptionLine(ModelSQL, ModelView):
             If(Bool(Eval('product_uom_category')),
                 ('category', '=', Eval('product_uom_category')),
                 ('category', '!=', -1)),
-            ],
-        depends=['product_uom_category', 'product'])
+            ])
     notes = fields.Text('Notes')
 
     @fields.depends('product', 'unit', 'description')
