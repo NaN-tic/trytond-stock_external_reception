@@ -102,16 +102,14 @@
             <field name="group" ref="stock.group_stock"/>
         </record>
         <record model="ir.model.access" id="access_stock_external_reception">
-            <field name="model"
-                search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_delete" eval="False"/>
         </record>
         <record model="ir.model.access" id="access_stock_external_reception_admin">
-            <field name="model"
-                search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
             <field name="group" ref="group_stock_external_reception"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -119,8 +117,7 @@
             <field name="perm_delete" eval="True"/>
         </record>
         <record model="ir.model.access" id="access_stock_external_reception_stock">
-            <field name="model"
-                search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -212,8 +209,7 @@
             <field name="act_window" ref="act_stock_external_reception_line"/>
         </record>
         <record model="ir.model.access" id="access_stock_external_reception_line">
-            <field name="model"
-                 search="[('model', '=', 'stock.external.reception.line')]"/>
+            <field name="model">stock.external.reception.line</field>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -221,8 +217,7 @@
         </record>
         <record model="ir.model.access"
                  id="access_stock_external_reception_line_admin">
-            <field name="model"
-                 search="[('model', '=', 'stock.external.reception.line')]"/>
+            <field name="model">stock.external.reception.line</field>
             <field name="group" ref="group_stock_external_reception"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
@@ -231,8 +226,7 @@
         </record>
         <record model="ir.model.access"
                  id="access_stock_external_reception_line_stock">
-            <field name="model"
-                search="[('model', '=', 'stock.external.reception.line')]"/>
+            <field name="model">stock.external.reception.line</field>
             <field name="group" ref="stock.group_stock"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
