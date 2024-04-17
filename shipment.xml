@@ -130,7 +130,7 @@
 
         <record model="ir.rule.group" id="rule_group_stock_external_reception">
             <field name="name">User in companies</field>
-            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
             <field name="global_p" eval="True"/>
         </record>
         <record model="ir.rule" id="rule_stock_external_reception1">
@@ -143,7 +143,7 @@
         <record model="ir.model.button" id="stock_external_reception_draft_button">
             <field name="name">draft</field>
             <field name="string">Draft</field>
-            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
         </record>
         <record model="ir.model.button-res.group" id="stock_external_reception_draft_button_group_external_reception">
             <field name="button" ref="stock_external_reception_draft_button"/>
@@ -157,7 +157,7 @@
         <record model="ir.model.button" id="stock_external_reception_receive_button">
             <field name="name">receive</field>
             <field name="string">Receive</field>
-            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
         </record>
         <record model="ir.model.button-res.group" id="stock_external_reception_receive_button_group_external_reception">
             <field name="button" ref="stock_external_reception_receive_button"/>
@@ -170,7 +170,7 @@
 
         <record model="ir.model.button" id="external_reception_done_button">
             <field name="name">done</field>
-            <field name="model" search="[('model', '=', 'stock.external.reception')]"/>
+            <field name="model">stock.external.reception</field>
         </record>
         <record model="ir.model.button-res.group" id="external_reception_done_button_group_stock">
             <field name="button" ref="external_reception_done_button"/>
