@@ -158,11 +158,9 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
                             line=line.rec_name,
                             shipment=reception.rec_name))
                 move = line._get_move()
+                move.shipment = shipment
                 move.to_location = shipment.to_location
                 move.from_location = shipment.from_location
-                if move.on_change_with_unit_price_required():
-                    move.unit_price = line.product.cost_price
-                    move.currency = line.reception.company.currency
                 moves.append(move._save_values)
             shipment.moves = moves
             vals = shipment._save_values
