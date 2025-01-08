@@ -161,9 +161,9 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
                 move.shipment = shipment
                 move.to_location = shipment.to_location
                 move.from_location = shipment.from_location
-                moves.append(move._save_values)
+                moves.append(move._save_values())
             shipment.moves = moves
-            vals = shipment._save_values
+            vals = shipment._save_values()
             vals['moves'] = [('create', moves)]
             to_create.append(vals)
         if to_create:
