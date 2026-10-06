@@ -187,16 +187,16 @@ class ExternalReception(Workflow, ModelSQL, ModelView):
         return shipment
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode != 'create':
+            return values
+
         pool = Pool()
         Config = pool.get('stock.configuration')
-
-        vlist = [x.copy() for x in vlist]
         config = Config(1)
-        for values in vlist:
-            values['code'] = config.external_reception_sequence.get()
-        shipments = super(ExternalReception, cls).create(vlist)
-        return shipments
+        values['code'] = config.external_reception_sequence.get()
+        return values
 
     @classmethod
     def copy(cls, receptions, default=None):
